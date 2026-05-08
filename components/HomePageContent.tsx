@@ -70,7 +70,7 @@ const projects = [
   {
     className: "md:col-span-8 relative group overflow-hidden h-96 md:h-auto",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC0yKTQ22SV1N0Swn7vxWcSWNGd7DH9UEBm6N8Urq37kwDIqKBX4XB73hNOoLcofqTty12egT4miYYwj6E5crgYcIi34tj05I29miBmRgoYxnEWLAl2rHOHat1GJ1O9t61zGQSRnvJQvdYjvLm67Jh7s3gHi4e1UxreTSPZKEvnnQNNd9aGruj3AxBoiRb3p39bJ39mXTYJEURfUWiCKmqXMXQqG_q3qIlEJtBCYdWjr0fdsvfd13EDTwHLtxVqy8XUFzLXqylg1w",
+      "/p4.webp",
     alt: "Pabellón de vidrio moderno rodeado de agua",
     overlay: "absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-transparent opacity-80",
     contentClass: "absolute bottom-10 left-10 bg-[#353534]/40 backdrop-blur-xl p-8 max-w-sm",
@@ -101,7 +101,7 @@ const projects = [
   {
     className: "md:col-span-8 relative group overflow-hidden h-96 md:h-auto",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCUFyG9fvwML5E-IAo1C-DAMV9sO645r-OR1K5fEPiHZKUfT5QCtruvgN83PEtL225yowzTsFwfMRszDtTS_5uCyvEwgLWX4RDXoMfq-X5QYFPqfZG7pV4lBa1S5VQozXJwTGFO-FciTd0Qbn3SRc7zN4S1tSuCD9f7J4s6j7LlBzm8DPYbO5u6BCmvUfawFf9-BrQt73iK2075HaTZdtPCrGHAfMu8qhsVLG57gQqiPHe3oHphEqUPtSCpJBl39kZ4_4Nhv43aNA",
+      "/interior.webp",
     alt: "Modelo de masterplan de desarrollo urbano",
     overlay: "absolute inset-0 bg-gradient-to-t from-[#131313] via-transparent to-transparent opacity-80",
     contentClass: "absolute bottom-10 left-10 bg-[#353534]/40 backdrop-blur-xl p-8 max-w-md",
@@ -201,9 +201,9 @@ export default function HomePageContent() {
       >
         <motion.div className="absolute inset-0 z-0" variants={slowFade}>
           <motion.img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiNv4heN0-frWiqwN90v2Rp_f6qcruelZtMwy5dHTjOLliwLrYkKzHdvgEfgBeCxEshy6_jbNqECLFnyYEdBlF3MuhqIKGRwxdY9WQWIogDhdu3Ot1iG3weAmN9pblLSdMOkwbDu2Ov4GGZBHa_S2o59qIPo1eQC743CyT7FryRhrUB-rZeGCkjSNoJBQLflcnQ664XacFDA4c_ZojdJjLsTQngAL8Ob-sLePWIzGzC0T59-pdUaVDBTorW_b1cg2HymDfpgbFog"
+            src="/Hero.webp"
             alt="Rascacielos moderno minimalista reflejando un atardecer"
-            className="w-full h-full object-cover grayscale opacity-60"
+            className="w-full h-full object-cover opacity-60"
             initial={reduceMotion ? undefined : { scale: 1.08 }}
             animate={reduceMotion ? undefined : { scale: 1 }}
             transition={reduceMotion ? undefined : { duration: 1.8, ease: easeCurve }}
@@ -253,7 +253,7 @@ export default function HomePageContent() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <AnimatedItem className="relative" variants={slowFade}>
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuABV1aqhtY_n7uJF6laRk95QXiBKLL5uu_fK-oSLXSmpQ8P-dg92iVXh_hmO10IAUOR95hGTFMZKxJ39r3cQtGOAJMUaIEk-EPoTzb65_yM1IcJJV8LWUtmH6N7i5_5uUY74Q9CzTdCe-BzMOxn7z7yLdYk-szwH2sm1gMDWSfu4GqPIeZcRVhO7ieB7tndVu_qi8pTrZ21OOIZB7gqsbkZKJ6jwhOZhCm22zrllcCzBM5Qmn2ekbFqUu3d3AU9nUEnAQG6ssR7Mw"
+              src="/Hero.webp"
               alt="Muro de concreto monolítico con sombras geométricas"
               className="w-full aspect-[4/5] object-cover grayscale"
             />
@@ -420,7 +420,7 @@ export default function HomePageContent() {
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-[#353534] flex items-center justify-center">
-                  <span className="material-symbols-outlined text-[#e9c176]">person</span>
+                  <img src="/luisortiz.webp" alt="Person" className="material-symbols-outlined text-[#e9c176]" />
                 </div>
                 <div>
                   <p className="font-bold text-sm uppercase tracking-wider text-[#e5e2e1]">Luis Ortiz</p>
