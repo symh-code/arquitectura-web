@@ -1,8 +1,51 @@
 export const runtime = "edge";
 
+// Map en memoria: IP -> { count, resetAt }
+// En Edge Runtime cada instancia tiene su propio Map,
+// pero igual frena ráfagas rápidas desde la misma IP.
+const ipMap = new Map<string, { count: number; resetAt: number }>();
+
+const LIMIT = 5;          // máximo 5 envíos
+const WINDOW_MS = 60_000; // por minuto
+
+function isRateLimited(ip: string): { limited: boolean; retryAfter: number } {
+  const now = Date.now();
+  const entry = ipMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    ipMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+    return { limited: false, retryAfter: 0 };
+  }
+
+  if (entry.count >= LIMIT) {
+    const retryAfter = Math.ceil((entry.resetAt - now) / 1000);
+    return { limited: true, retryAfter };
+  }
+
+  entry.count += 1;
+  return { limited: false, retryAfter: 0 };
+}
 
 export async function POST(request: Request) {
   try {
+    // Obtener IP del cliente desde los headers de Cloudflare
+    const ip =
+      request.headers.get("cf-connecting-ip") ??
+      request.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+      "unknown";
+
+    const { limited, retryAfter } = isRateLimited(ip);
+
+    if (limited) {
+      return Response.json(
+        { error: `Demasiados intentos. Espera ${retryAfter} segundos.` },
+        {
+          status: 429,
+          headers: { "Retry-After": String(retryAfter) },
+        }
+      );
+    }
+
     const data = await request.json();
     const { nombre, correo, tipo, mensaje } = data;
 
